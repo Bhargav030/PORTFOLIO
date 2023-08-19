@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ROCK PAPER SCISSOR</title>
+    <style>
+        body {
+            background-color: yellow;
+        }
+        .shap {
+            background-color: aquamarine;
+            color: blue;
+            display: inline-block;
+            padding: 10px;
+            border: 10px solid red;
+            margin: 10px;
+            margin-top: 100px;
+        }
+        .img {
+            width: 200px;
+            height: 200px;
+        }
+        .he {
+            text-transform: uppercase;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body bgcolor="yellow">
+    <center>
+        <h1 style="color: blue; font-family: cursive;">ROCK PAPER SCISSOR</h1>
+        <h2 id="players" style="color: rgb(255, 0, 144); font-family: cursive;"></h2>
+        
+        <div class="shap">
+            <img src="img1.PNG" id="myimg1" class="img">
+        </div>
+        <div class="shap">
+            <img src="img2.PNG" id="myimg2" class="img">
+        </div>
+        <div class="mt-4">
+            <button class="btn btn-success" style="color: linen; font-family: cursive;" onclick="roll()">Let's Start The Game</button>
+        </div>
+        <h3 class="he" id="winner"></h3>
+        <script>
+            var a = prompt('Enter player1 name');
+            var b = prompt('Enter player2 name');
+            var c = ["img1.PNG", "img2.PNG", "img3.PNG"];
+
+            var playersElement = document.getElementById('players');
+            playersElement.textContent = a + ' vs ' + b;
+
+            var img1Element = document.getElementById('myimg1');
+            var img2Element = document.getElementById('myimg2');
+
+            function roll() {
+                var randomIndex1 = Math.floor(Math.random() * c.length);
+                var randomIndex2 = Math.floor(Math.random() * c.length);
+
+                img1Element.src = c[randomIndex1];
+                img2Element.src = c[randomIndex2];
+
+                var winnerElement = document.getElementById('winner');
+                
+                if (c[randomIndex1] === c[randomIndex2]) {
+                    winnerElement.innerHTML = "<span style='color:blue;font-family:cursive'>It's a draw match</span>";
+                } else if (
+                    (c[randomIndex1] === 'img1.PNG' && c[randomIndex2] === 'img3.PNG') ||
+                    (c[randomIndex1] === 'img2.PNG' && c[randomIndex2] === 'img1.PNG') ||
+                    (c[randomIndex1] === 'img3.PNG' && c[randomIndex2] === 'img2.PNG')
+                ) {
+                    winnerElement.innerHTML = "<span style='color:green;font-family:cursive'>" + a + " is the winner</span>";
+                } else {
+                    winnerElement.innerHTML = "<span style='color:green;font-family:cursive'>" + b + " is the winner</span>";
+                }
+            }
+        </script>
+    </center>
+</body>
+</html>
